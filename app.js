@@ -19,7 +19,7 @@ app.use("/api/v1", indexRouter);
 
 //connect to database
 mongoose.connect(
-  "mongodb://localhost/auth",
+  process.env.MONGO_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
   err => {
     console.log(err ? err : "db connected");
