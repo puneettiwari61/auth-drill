@@ -16,7 +16,7 @@ var studentSchema = new Schema(
       type: String,
       required: true
     },
-    batchNumber: {
+    batch: {
       type: Number,
       required: true
     }
