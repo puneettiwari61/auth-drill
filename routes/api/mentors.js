@@ -1,9 +1,11 @@
 var express = require("express");
 var router = express.Router();
+var mentors = require("../../controllers/mentors");
 
-/* signup */
-router.get("/signup", function(req, res, next) {
-  res.json({ success: true });
-});
+/* student signup */
+router.post("/signup", mentors.signUp);
+
+/* student login */
+router.post("/login", mentors.login);
 
 module.exports = router;
