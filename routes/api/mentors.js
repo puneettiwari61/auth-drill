@@ -3,10 +3,10 @@ var router = express.Router();
 var mentors = require("../../controllers/mentors");
 var middlewares = require("../../modules/middlewares");
 
-/* student signup */
+/* mentors signup */
 router.post("/signup", mentors.signUp);
 
-/* student login */
+/* mentors login */
 router.post("/login", middlewares.seedUsers, mentors.login);
 
 module.exports = router;
