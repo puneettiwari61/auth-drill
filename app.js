@@ -3,8 +3,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-var studentsRouter = require("./routes/api/students");
-var mentorsRouter = require("./routes/api/mentors");
+var indexRouter = require("./routes/api");
+
 require("dotenv").config();
 
 var app = express();
@@ -15,8 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/api/v1/students", studentsRouter);
-app.use("/api/v1/mentors", mentorsRouter);
+app.use("/api/v1", indexRouter);
 
 //connect to database
 mongoose.connect(

@@ -15,6 +15,10 @@ var mentorSchema = new Schema(
     name: {
       type: String,
       required: true
+    },
+    isMentor: {
+      type: Boolean,
+      default: true
     }
   },
   { timestamps: true }

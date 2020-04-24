@@ -11,6 +11,10 @@ var todoSchema = new Schema(
       type: Boolean,
       default: false,
       required: true
+    },
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: "Mentor"
     }
   },
   { timestamps: true }

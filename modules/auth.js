@@ -2,7 +2,11 @@ const jwt = require("jsonwebtoken");
 
 module.exports = {
   generateJWT: async user => {
-    var payload = { userID: user.id, email: user.email };
+    var payload = {
+      userID: user.id,
+      email: user.email,
+      isMentor: user.isMentor
+    };
     var token = await jwt.sign(payload, process.env.SECRET);
     return token;
   },
@@ -19,6 +23,17 @@ module.exports = {
       }
     } else {
       res.json({ msg: "Token required " });
+    }
+  },
+  isMentor: async (req, res, next) => {
+    try {
+      if (req.user && req.user.isMentor) {
+        next();
+      } else {
+        res.json({ succes: false, msg: "not authorzed" });
+      }
+    } catch (error) {
+      res.json(error);
     }
   }
 };

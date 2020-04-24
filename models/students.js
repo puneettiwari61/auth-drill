@@ -6,6 +6,7 @@ var studentSchema = new Schema(
   {
     email: {
       type: String,
+      unique: true,
       required: true
     },
     password: {
@@ -19,6 +20,10 @@ var studentSchema = new Schema(
     batch: {
       type: Number,
       required: true
+    },
+    isMentor: {
+      type: Boolean,
+      default: false
     }
   },
   { timestamps: true }
