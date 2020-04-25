@@ -1,12 +1,17 @@
 var express = require("express");
 var router = express.Router();
-var auth = require("../../modules/auth");
 var todo = require("../../controllers/todos");
+var middleware = require("../../modules/middlewares");
 
 // list todos
-router.get("/", auth.verifyToken, todo.listAll);
+router.get("/", middleware.isUserLogged, todo.listAll);
 
 /* create todo */
-router.post("/create", auth.verifyToken, auth.isMentor, todo.createOne);
+router.post(
+  "/create",
+  middleware.isUserLogged,
+  middleware.isMentor,
+  todo.createOne
+);
 
 module.exports = router;

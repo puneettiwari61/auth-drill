@@ -1,10 +1,9 @@
 var Todo = require("../models/todos");
-var auth = require("../modules/auth");
 
 module.exports = {
   createOne: async (req, res) => {
     try {
-      req.body.createdBy = req.user.userID;
+      req.body.createdBy = req.user._id;
       var todo = await Todo.create(req.body);
       res.json({ success: true, todo });
     } catch (err) {
@@ -14,6 +13,8 @@ module.exports = {
   },
   listAll: async (req, res) => {
     try {
+      console.log(req.session);
+      console.log(req.user, "user");
       var todos = await Todo.find();
       res.json({ success: true, todos });
     } catch (err) {

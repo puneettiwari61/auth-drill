@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var student = require("../../controllers/students");
+var middleware = require("../../modules/middlewares");
 
 /* student signup */
 router.post("/signup", student.signUp);
